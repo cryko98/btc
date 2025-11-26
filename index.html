@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Titty Chicken - $BTC | Meme Edition</title>
+    <link rel="icon" type="image/png" href="https://pbs.twimg.com/media/G6toUxnWYAAB6S5?format=jpg&name=small">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Chewy & Comic Neue for that meme look -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- MEME THEME SETUP --- */
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #fef3c7; /* Light Yellow */
+            background-image: radial-gradient(#fbbf24 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .meme-font {
+            font-family: 'Chewy', cursive;
+            letter-spacing: 1px;
+        }
+
+        /* Brutalist / Comic Borders */
+        .brutal-box {
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0px #000;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .brutal-box:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px #000;
+        }
+        
+        .brutal-box:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        /* Wiggle Animation */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        
+        .animate-wiggle {
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        .animate-wiggle-fast {
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 4px solid black;
+            border-bottom: 4px solid black;
+            background: #ffeb3b;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll-left 15s linear infinite;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Highlight text */
+        .marker-highlight {
+            background: linear-gradient(120deg, #84cc16 0%, #84cc16 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+        }
+
+    </style>
+</head>
+<body class="selection:bg-yellow-400 selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-white border-b-4 border-black" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 transform hover:scale-110 transition cursor-pointer">
+                    <img class="w-12 h-12 rounded-full border-2 border-black" src="https://pbs.twimg.com/media/G6toUxnWYAAB6S5?format=jpg&name=small" alt="BTC Logo">
+                    <span class="meme-font text-3xl font-bold text-black drop-shadow-sm">$BTC</span>
+                </div>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-xl font-bold hover:text-orange-600 hover:underline decoration-4 decoration-black underline-offset-4 transition">Home</a>
+                    <a href="#about" class="text-xl font-bold hover:text-orange-600 hover:underline decoration-4 decoration-black underline-offset-4 transition">About</a>
+                    <a href="#how-to-buy" class="text-xl font-bold hover:text-orange-600 hover:underline decoration-4 decoration-black underline-offset-4 transition">How to Buy</a>
+                    <a href="#memes" class="text-xl font-bold hover:text-orange-600 hover:underline decoration-4 decoration-black underline-offset-4 transition">Gallery</a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden md:flex gap-4">
+                    <a href="#chart" class="brutal-box bg-green-400 text-black font-black py-2 px-6 text-xl rounded-lg hover:bg-green-300 transform -rotate-2">
+                        CHART 📈
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Btn -->
+                <div class="md:hidden">
+                    <button onclick="toggleMenu()" class="text-black text-3xl border-2 border-black p-1 rounded bg-yellow-300 shadow-[4px_4px_0px_0px_#000]">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black absolute w-full">
+            <div class="flex flex-col p-4 space-y-4 text-center font-bold text-xl">
+                <a href="#home" onclick="toggleMenu()" class="hover:bg-yellow-200 p-2 border-2 border-transparent hover:border-black rounded">Home</a>
+                <a href="#about" onclick="toggleMenu()" class="hover:bg-yellow-200 p-2 border-2 border-transparent hover:border-black rounded">About</a>
+                <a href="#how-to-buy" onclick="toggleMenu()" class="hover:bg-yellow-200 p-2 border-2 border-transparent hover:border-black rounded">How to Buy</a>
+                <a href="#memes" onclick="toggleMenu()" class="hover:bg-yellow-200 p-2 border-2 border-transparent hover:border-black rounded">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        
+        <!-- Chaotic Background Shapes -->
+        <div class="absolute top-20 right-10 w-32 h-32 bg-pink-400 rounded-full border-4 border-black animate-bounce opacity-50 z-0"></div>
+        <div class="absolute bottom-20 left-10 w-48 h-48 bg-blue-400 transform rotate-12 border-4 border-black opacity-50 z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
+            
+            <!-- Left: Text -->
+            <div class="text-left reveal active flex flex-col items-start">
+                <div class="bg-yellow-300 border-2 border-black px-4 py-1 text-black font-bold transform -rotate-3 mb-4 shadow-[4px_4px_0px_0px_#000]">
+                    🚀 MOON MISSION IMMINENT
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black text-black mb-4 leading-none drop-shadow-[5px_5px_0px_#fff]">
+                    BIG TITTY <br>
+                    <span class="text-orange-500 text-shadow-black">CHICKEN</span>
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-800 mb-8 font-bold bg-white/80 p-4 border-2 border-black inline-block rounded-lg transform rotate-1">
+                    The thickest bird on Solana. <br>
+                    <span class="marker-highlight">Don't be a nugget, be a legend.</span>
+                </p>
+
+                <!-- CA Box -->
+                <div class="w-full bg-white border-4 border-black p-4 mb-8 flex flex-col sm:flex-row items-center gap-4 shadow-[8px_8px_0px_0px_#000] transform -rotate-1 hover:rotate-0 transition">
+                    <span class="text-black font-black text-xl meme-font">CA:</span>
+                    <code id="ca-text" class="font-mono text-lg font-bold text-blue-600 break-all select-all">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code>
+                    <button onclick="copyToClipboard()" class="ml-auto bg-gray-200 hover:bg-gray-300 border-2 border-black p-2 rounded shadow-[2px_2px_0px_0px_#000] active:translate-y-1 active:shadow-none transition">
+                        <i class="fas fa-copy text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap gap-6">
+                    <a href="https://pump.fun/xxxxxxxxxxxxxxxxxxxxxxxxxxxx" target="_blank" class="brutal-box bg-red-500 text-white font-black py-4 px-8 text-2xl uppercase rounded-xl hover:bg-red-600 transform rotate-2">
+                        BUY ON PUMP.FUN 💊
+                    </a>
+                    <a href="#" class="brutal-box bg-black text-white font-black py-4 px-8 text-2xl uppercase rounded-xl hover:bg-gray-800 transform -rotate-2">
+                        X / TWITTER ✖️
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="relative reveal flex justify-center">
+                <div class="relative w-80 h-80 md:w-[500px] md:h-[500px]">
+                    <!-- Funny background starburst -->
+                    <div class="absolute inset-0 bg-yellow-400 rounded-full border-4 border-black animate-spin-slow" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                    
+                    <!-- Main Image with wiggle -->
+                    <img src="https://pbs.twimg.com/media/G6toUxnWYAAB6S5?format=jpg&name=small" 
+                         class="absolute inset-8 w-[calc(100%-4rem)] h-[calc(100%-4rem)] object-cover rounded-full border-4 border-black z-10 animate-wiggle shadow-[10px_10px_0px_0px_rgba(0,0,0,0.2)]" 
+                         alt="Funny Chicken">
+                         
+                    <!-- Speech Bubble -->
+                    <div class="absolute -top-4 -right-4 bg-white border-4 border-black p-4 rounded-2xl z-20 animate-bounce">
+                        <p class="font-bold text-xl">CLUCK YEAH!</p>
+                        <div class="absolute bottom-[-10px] left-4 w-4 h-4 bg-white border-r-4 border-b-4 border-black transform rotate-45"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE STRIP -->
+    <div class="marquee-container transform -rotate-1 z-20 shadow-[0px_4px_10px_rgba(0,0,0,0.2)]">
+        <div class="marquee-content text-4xl font-black meme-font text-black py-4">
+            🍗 $BTC • GET RICH OR DIE FRYING • BIG TITTY CHICKEN • SOLANA • PUMP IT • HODL • 🍗 $BTC • GET RICH OR DIE FRYING • BIG TITTY CHICKEN • SOLANA • PUMP IT • HODL •
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-white border-b-4 border-black relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="brutal-box bg-purple-100 p-8 md:p-12 relative reveal transform rotate-1">
+                
+                <h2 class="text-5xl md:text-6xl text-black mb-8 text-center meme-font" style="text-shadow: 3px 3px 0px #fff, 6px 6px 0px #000;">WHAT THE CLUCK?</h2>
+
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                         <img src="https://pbs.twimg.com/media/G6toUxnWYAAB6S5?format=jpg&name=small" alt="About BTC" class="w-full rounded-2xl border-4 border-black shadow-[8px_8px_0px_#000] transform -rotate-2 hover:rotate-2 transition duration-300">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <p class="text-2xl text-black font-bold mb-6 leading-relaxed">
+                            Listen, it's simple. <br>
+                            Dogs are boring. Frogs are old news. <br>
+                            It's time for the <span class="bg-yellow-300 px-2 border-2 border-black rounded inline-block transform -rotate-1">CHICKEN</span> era.
+                        </p>
+                        <p class="text-lg text-gray-800 font-medium mb-8">
+                            $BTC (Big Titty Chicken) is the ultimate community token. No taxes, no BS, just pure poultry power. We are taking over the Solana blockchain one wing at a time.
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white border-4 border-black p-4 text-center rounded-xl shadow-[4px_4px_0px_#000]">
+                                <h4 class="text-4xl font-black text-black meme-font">0/0</h4>
+                                <p class="font-bold">TAX</p>
+                            </div>
+                            <div class="bg-white border-4 border-black p-4 text-center rounded-xl shadow-[4px_4px_0px_#000]">
+                                <h4 class="text-4xl font-black text-black meme-font">1B</h4>
+                                <p class="font-bold">SUPPLY</p>
+                            </div>
+                            <div class="bg-white border-4 border-black p-4 text-center rounded-xl shadow-[4px_4px_0px_#000]">
+                                <h4 class="text-4xl font-black text-black meme-font">🔥</h4>
+                                <p class="font-bold">LP BURNT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="how-to-buy" class="py-24 bg-blue-100 border-b-4 border-black relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-10 left-10 text-9xl opacity-10 pointer-events-none">💰</div>
+        <div class="absolute bottom-10 right-10 text-9xl opacity-10 pointer-events-none">🍗</div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <h2 class="text-5xl md:text-7xl text-center text-black mb-16 reveal meme-font drop-shadow-md">ROAD TO RICHES</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="reveal brutal-box bg-white p-8 rounded-xl transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-yellow-400 border-4 border-black rounded-full flex items-center justify-center mb-6 text-2xl font-black shadow-[4px_4px_0px_#000]">1</div>
+                    <h3 class="text-3xl text-black mb-3 meme-font">GET A WALLET</h3>
+                    <p class="font-bold text-gray-700">Download Phantom. Don't lose your seed phrase or you'll cry.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="reveal brutal-box bg-white p-8 rounded-xl transform hover:-translate-y-2 delay-100">
+                    <div class="w-16 h-16 bg-orange-400 border-4 border-black rounded-full flex items-center justify-center mb-6 text-2xl font-black shadow-[4px_4px_0px_#000]">2</div>
+                    <h3 class="text-3xl text-black mb-3 meme-font">BUY $SOL</h3>
+                    <p class="font-bold text-gray-700">Get some Solana. You need gas to fly to the moon.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="reveal brutal-box bg-white p-8 rounded-xl transform hover:-translate-y-2 delay-200">
+                    <div class="w-16 h-16 bg-green-400 border-4 border-black rounded-full flex items-center justify-center mb-6 text-2xl font-black shadow-[4px_4px_0px_#000]">3</div>
+                    <h3 class="text-3xl text-black mb-3 meme-font">APE IN</h3>
+                    <p class="font-bold text-gray-700">Go to pump.fun, paste the CA, and swap. Welcome to the coop!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="memes" class="py-24 bg-red-100 border-b-4 border-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-5xl md:text-6xl text-center text-black mb-4 reveal meme-font">HALL OF FAME</h2>
+            <p class="text-center text-xl font-bold mb-12 reveal">Stolen memes for the soul.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="reveal brutal-box p-2 bg-white transform rotate-2 hover:rotate-0 hover:z-10 relative">
+                    <div class="absolute -top-4 -right-4 text-4xl z-20 animate-wiggle">😂</div>
+                    <img src="https://pbs.twimg.com/media/G6trKQKXsAALVGx?format=png&name=small" alt="Meme 1" class="w-full h-64 object-cover border-2 border-black">
+                    <p class="text-center font-bold mt-2 font-mono">me_irl</p>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="reveal brutal-box p-2 bg-white transform -rotate-1 hover:rotate-0 hover:z-10 relative">
+                    <img src="https://pbs.twimg.com/media/G6trEvuXAAATLW-?format=png&name=360x360" alt="Meme 2" class="w-full h-64 object-cover border-2 border-black">
+                    <p class="text-center font-bold mt-2 font-mono">wen moon?</p>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="reveal brutal-box p-2 bg-white transform rotate-1 hover:rotate-0 hover:z-10 relative">
+                    <div class="absolute -bottom-4 -left-4 text-4xl z-20 animate-wiggle-fast">🔥</div>
+                    <img src="https://pbs.twimg.com/media/G6tq_pRWkAAF6KG?format=jpg&name=small" alt="Meme 3" class="w-full h-64 object-cover border-2 border-black">
+                    <p class="text-center font-bold mt-2 font-mono">gm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 reveal">
+            <h2 class="text-5xl text-center text-black mb-8 meme-font">LOOK AT THE GREEN CANDLES</h2>
+            <div class="w-full h-[600px] border-4 border-black bg-gray-100 shadow-[10px_10px_0px_#000] relative rounded-xl overflow-hidden">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                    <i class="fas fa-chart-line text-8xl mb-4 text-green-500 animate-bounce"></i>
+                    <p class="text-2xl font-bold">CHART GOES HERE...</p>
+                </div>
+                <!-- Actual Iframe would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white pt-16 pb-8 border-t-4 border-black">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <div class="flex items-center gap-4 mb-8">
+                <img class="h-16 w-16 rounded-full border-2 border-white" src="https://pbs.twimg.com/media/G6toUxnWYAAB6S5?format=jpg&name=small" alt="BTC Logo">
+                <span class="text-4xl font-bold meme-font text-yellow-400">$BTC</span>
+            </div>
+            
+            <div class="flex gap-8 mb-8">
+                <a href="#" class="text-4xl hover:text-blue-400 hover:scale-125 transition transform">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+
+            <p class="text-center text-gray-400 font-bold">
+                © 2025 Big Titty Chicken. <br>Don't buy this if you hate money.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar Border on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-[0px_4px_0px_#000]');
+            } else {
+                navbar.classList.remove('shadow-[0px_4px_0px_#000]');
+            }
+        });
+
+        // Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Copy to Clipboard
+        function copyToClipboard() {
+            const caText = document.getElementById('ca-text').innerText;
+            navigator.clipboard.writeText(caText).then(() => {
+                const btn = document.querySelector('button[onclick="copyToClipboard()"]');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check text-green-600"></i>';
+                btn.classList.add('bg-green-200');
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('bg-green-200');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
